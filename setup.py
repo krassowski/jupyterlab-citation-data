@@ -27,7 +27,7 @@ def get_version(path: Path):
 
 
 long_description = (HERE / "README.md").read_text()
-version = get_version(HERE / 'jupyterlab_citation_manager' / '_version.py')
+version = get_version(HERE / 'jupyterlab_citation_data' / '_version.py')
 
 setup_args = dict(
     name="jupyterlab-citation-data",
@@ -48,6 +48,7 @@ setup_args = dict(
         ("share/jupyter/csl-styles", [
             str(Path(path).relative_to(HERE))
             for path in glob(str(HERE / "csl-styles" / "**" / "*"), recursive=True)
+            if path.endswith('.csl')
         ])
     ],
     classifiers=[
